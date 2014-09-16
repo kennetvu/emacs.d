@@ -6,21 +6,27 @@
 ;; Created: 2014-09-16
 ;; Credit: My files are created based on: 
 ;; - Magnar Sveen : https://github.com/magnars/.emacs.d/
+;; - Phil Hagelberg - https://github.com/technomancy/better-defaults
 ;; ----
 
 ;; General settings to be load before os check
 
 
-;; Check wheter emacs is running on mac/linux or windows
-;;Psudo code: if mac-> Load mac settings, else if gnu linux -> load gnu
-;;Everything after if else, is general load
+;; Set path to dependencies
+(setq site-lisp-dir
+      (expand-file-name "site-lisp" user-emacs-directory))
 
-;; Os check
-(if (eq system-type 'darwin)
-    (progn
-      ;; change command to meta, and ignore option to use weird Norwegian keyboard
-      (print "Running on mac")
-      (require 'mac)
-      ))
+;; Set up load path
+(add-to-list 'load-path user-emacs-directory)
+(add-to-list 'load-path site-lisp-dir)
+
+;;Load my defaults settings
+(require 'my-defaults)
+
+;; Are we on a mac?
+(setq is-mac (equal system-type 'darwin))
+
+;;Load mac settings
+(when is-mac  (require 'mac))
 
 ;; Settings to be load after os check
