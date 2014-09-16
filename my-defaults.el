@@ -23,6 +23,9 @@
 
 (show-paren-mode 1)
 (setq-default indent-tabs-mode nil)
+
+;;If flash bell is annoying
+;; (setq ring-bell-function 'ignore)
 (setq x-select-enable-clipboard t ;;clipboard and killing/yank same
       x-select-enable-primary t ;; just another default to clipboard
       save-interprogram-paste-before-kill t ;;Another clipboard fix
