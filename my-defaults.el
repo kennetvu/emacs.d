@@ -21,8 +21,12 @@
 (require 'saveplace)
 (setq-default save-place t) ;; Points goes to the last place.
 
+;; Paren mode
 (show-paren-mode 1)
 (setq-default indent-tabs-mode nil)
+
+;; Hightlight current line
+(global-hl-line-mode 1)
 
 ;;If flash bell is annoying
 ;; (setq ring-bell-function 'ignore)
@@ -33,8 +37,17 @@
       require-final-newline t ;; Adds newline end of file
       visible-bell t ;; Flashes screen instead of BEEP
       ediff-window-setup-function 'ediff-setup-windows-plain ;;diff settings, not sure if im using it,.http://www.emacswiki.org/emacs/EdiffMode
-      save-place-file (concat user-emacs-directory "places") ;; Save place files to places
+      save-place-file (concat user-emacs-directory ".places") ;; Save place files to places
       backup-directory-alist `(("." . ,(concat user-emacs-directory
-                                               "backups")))) ;; Where to place backups
+                                               "backups"))) ;; Where to place backups
+      vc-make-backup-files t ;; Make backups of files, even when they're in version control
+)
+
+;; window mode stuff
+(when window-system
+  (setq frame-title-format '(buffer-file-name "%f" ("%b")))
+  (tooltip-mode -1)
+  (blink-cursor-mode -1))
+
 
 (provide 'my-defaults)

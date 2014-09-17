@@ -29,4 +29,8 @@
 ;;Load mac settings
 (when is-mac  (require 'mac))
 
-;; Settings to be load after os check
+;;Load appearance
+(require 'appearance)
+
+;; Setup packages
+;;(require 'setup-package)
