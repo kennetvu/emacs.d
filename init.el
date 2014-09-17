@@ -9,9 +9,6 @@
 ;; - Phil Hagelberg - https://github.com/technomancy/better-defaults
 ;; ----
 
-;; General settings to be load before os check
-
-
 ;; Set path to dependencies
 (setq site-lisp-dir
       (expand-file-name "site-lisp" user-emacs-directory))
@@ -19,6 +16,9 @@
 ;; Set up load path
 (add-to-list 'load-path user-emacs-directory)
 (add-to-list 'load-path site-lisp-dir)
+
+;; Load pre defaults
+(require 'pre-defaults)
 
 ;;Load my defaults settings
 (require 'my-defaults)
@@ -29,8 +29,13 @@
 ;;Load mac settings
 (when is-mac  (require 'mac))
 
+;;Load settings when running emacs in window
+(when window-system (require 'window-defaults))
+
 ;;Load appearance
 (require 'appearance)
 
+;; Load keybindings
+(require 'key-bindings)
 ;; Setup packages
 ;;(require 'setup-package)

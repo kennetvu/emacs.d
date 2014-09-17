@@ -1,13 +1,6 @@
 ;; -- My-defaults
 ;; Based on Phil Hagelberg - https://github.com/technomancy/better-defaults
 
-;; Turn off mouse interface early
-(if (fboundp 'menu-bar-mode) (menu-bar-mode -1)) ;; Meny bar
-(if (fboundp 'tool-bar-mode) (tool-bar-mode -1)) ;; Toolbar
-(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1)) ;; Scroll (Not sure if I want this enabled or not)
-;;No splashscreen
-(setq inhibit-startup-message t)
-
 
 ;;ido mode on
 (ido-mode t)
@@ -21,12 +14,30 @@
 (require 'saveplace)
 (setq-default save-place t) ;; Points goes to the last place.
 
+;;Cursor vertical line, want box? just change to box.
+(set-default 'cursor-type 'bar)
+
 ;; Paren mode
 (show-paren-mode 1)
 (setq-default indent-tabs-mode nil)
+;;By default, there’s a small delay before showing a matching parenthesis. It can be deactivated with
+(setq show-paren-delay 0)
 
 ;; Hightlight current line
 (global-hl-line-mode 1)
+
+;;Linummode
+(global-linum-mode 1)
+
+;; Show column number
+(column-number-mode 1)
+
+;;Make window 120x50 when emacs starts
+(add-to-list 'default-frame-alist '(height . 50))
+(add-to-list 'default-frame-alist '(width . 115))
+
+;; La meg svare y/n på ja/nei-spørsmål i stedet for yes/no.
+(fset 'yes-or-no-p 'y-or-n-p)
 
 ;;If flash bell is annoying
 ;; (setq ring-bell-function 'ignore)
@@ -43,11 +54,23 @@
       vc-make-backup-files t ;; Make backups of files, even when they're in version control
 )
 
-;; window mode stuff
-(when window-system
-  (setq frame-title-format '(buffer-file-name "%f" ("%b")))
-  (tooltip-mode -1)
-  (blink-cursor-mode -1))
+;;Stop split windows when openning multiple files
+(add-hook 'emacs-startup-hook
+          (lambda () (delete-other-windows)) t)
 
+;; delete seleted text when typing
+(delete-selection-mode 1)
+
+;;keep a list of recently opened files
+(recentf-mode 1) 
+(setq recentf-max-saved-items 50) ;; just 20 is too recent
+;; Lines should be 80 characters wide, not 72
+(setq fill-column 80)
+
+;; Easily navigate sillycased words
+(global-subword-mode 1)
+
+;; Don't break lines for me, please
+(setq-default truncate-lines t)
 
 (provide 'my-defaults)
