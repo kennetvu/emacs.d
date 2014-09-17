@@ -13,9 +13,14 @@
 (setq site-lisp-dir
       (expand-file-name "site-lisp" user-emacs-directory))
 
+;; Set path to dependencies
+(setq themes-dir
+      (expand-file-name "themes" user-emacs-directory))
+
 ;; Set up load path
 (add-to-list 'load-path user-emacs-directory)
 (add-to-list 'load-path site-lisp-dir)
+(add-to-list 'load-path themes-dir)
 
 ;; Load pre defaults
 (require 'pre-defaults)
