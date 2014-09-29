@@ -9,7 +9,9 @@
 ;; - Phil Hagelberg - https://github.com/technomancy/better-defaults
 ;; ----
 
+
 ;; Set path to dependencies
+;; Keep custom mods in site-lisp?
 (setq site-lisp-dir
       (expand-file-name "site-lisp" user-emacs-directory))
 
@@ -56,3 +58,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+
+
+;(require 'neotree)
+;(global-set-key [f8] 'neotree-toggle)

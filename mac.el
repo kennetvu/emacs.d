@@ -4,6 +4,10 @@
 ;; URL: https://github.com/knyyy/emacs.d/
 ;; --------
 
+;;Set standard dir when running on mac
+(setq default-directory "~/")
+
+
 ;;alt/option to super, command to meta -> same as regular keyboard ctrl and alt
 (setq mac-option-modifier 'super)
 (setq mac-command-modifier 'meta)
