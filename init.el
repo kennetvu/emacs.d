@@ -1,10 +1,6 @@
-;; init.el ---- Init file
-
 ;; Author: Kennet Vuong
 ;; URL: https://github.com/knyyy/emacs.d/
-;; Version: 0.1
-;; Created: 2014-09-16
-;; Credit: My files are created based on: 
+;; Credit: 
 ;; - Magnar Sveen : https://github.com/magnars/.emacs.d/
 ;; - Phil Hagelberg - https://github.com/technomancy/better-defaults
 ;; ----
@@ -24,8 +20,11 @@
 (add-to-list 'load-path site-lisp-dir)
 ;;(add-to-list 'load-path themes-dir)
 
-;; Load pre defaults
-(require 'pre-defaults)
+;;No splashscreen
+(setq inhibit-startup-message t)
+
+;;Load appearance
+(require 'appearance)
 
 ;;Load my defaults settings
 (require 'my-defaults)
@@ -39,8 +38,6 @@
 ;;Load settings when running emacs in window
 (when window-system (require 'window-defaults))
 
-;;Load appearance
-(require 'appearance)
 
 ;; Load keybindings
 (require 'key-bindings)

@@ -20,6 +20,7 @@
 ;; Paren mode
 (show-paren-mode 1)
 (setq-default indent-tabs-mode nil)
+
 ;;By default, there’s a small delay before showing a matching parenthesis. It can be deactivated with
 (setq show-paren-delay 0)
 
@@ -64,6 +65,7 @@
 ;;keep a list of recently opened files
 (recentf-mode 1) 
 (setq recentf-max-saved-items 50) ;; just 20 is too recent
+
 ;; Lines should be 80 characters wide, not 72
 (setq fill-column 80)
 
