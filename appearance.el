@@ -8,6 +8,7 @@
 (setq color-theme-is-global t)
 
 ;;Set paren match color to orange
+(require 'paren)
 (set-face-background 'show-paren-match-face "#ff8c00")
 
 ;;(add-to-list 'load-path (concat user-emacs-directory "themes"))
